@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', sans-serif;
+            background: radial-gradient(circle at top, #1f1f2e, #0f0f17);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            color: #fff;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            padding: 40px 35px;
+            border-radius: 20px;
+            width: 380px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .success {
+            background: rgba(46, 204, 113, 0.15);
+            color: #2ecc71;
+            padding: 10px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 14px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.07);
+            color: white;
+            font-size: 14px;
+            transition: all 0.25s ease;
+        }
+
+        input::placeholder {
+            color: #888;
+        }
+
+        input:focus {
+            border-color: #7c8cff;
+            background: rgba(255,255,255,0.1);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(124,140,255,0.3);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            background: linear-gradient(135deg, #7c8cff, #5a6bff);
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 20px rgba(92,107,255,0.4);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Contact Form</h2>
+
+    {% if success %}
+        <div class="success">
+            ✅ Form submitted successfully!
+        </div>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="form-group">
+            <label for="id_name">Full Name</label>
+            <input type="text" name="name" id="id_name" placeholder="Enter your name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="id_email">Email Address</label>
+            <input type="email" name="email" id="id_email" placeholder="Enter your email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="id_phone">Phone Number</label>
+            <input type="text" name="phone" id="id_phone" placeholder="Enter your phone number" required>
+        </div>
+
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+</body>
+</html>
